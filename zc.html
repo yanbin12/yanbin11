@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/index.js"></script>
+</head>
+<body>
+账号<input type="text" id="user"><br>
+密码<input type="text" id="pass"><br>
+<button id="btn">注册</button>
+<button id="login">登录</button>
+<script>
+    btn.onclick = function(){
+        ajax({
+            url:'http://localhost:8002',
+            type:'post',
+            data:{
+                user:user.value,
+                pass:pass.value
+            },
+            success:function(data){
+                console.log(data)
+            },
+            error:function(){
+                console.log('服务器错误')
+            }
+        })
+    };
+
+    login.onclick = function(){
+        ajax({
+            url:'http://localhost:8000',
+            type:'post',
+            data:{
+                user:user.value,
+                pass:pass.value
+            },
+            success:function(data){
+               if(data=="登录成功"){
+                   window.location="content.html"
+               }
+            },
+            error:function(){
+                console.log('服务器错误')
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
